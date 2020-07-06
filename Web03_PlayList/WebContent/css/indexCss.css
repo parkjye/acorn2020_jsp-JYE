@@ -1,0 +1,21 @@
+/* 
+	index.jsp 전용 css입니다. 
+	
+	header, nav는 common으로 빠질 예정입니다.
+	index.jsp에서는 bootstrap을 사용하지 않습니다.
+*/
+
+.Wrap {
+	background-color:cyan; /**/
+	margin: 0 auto;
+}
+
+.header{
+	background-color:yellow;/**/
+}
+
+
+.addListWrap{}
+
+
+.navWrap{}
