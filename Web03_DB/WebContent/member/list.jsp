@@ -52,42 +52,21 @@
 	//회원목록 얻어오기
 	List<MemberDto> list = dao.getList();
 %>
+	<div class="navbar navbar-expand-sm navbar-dark bg-primary">
+		<a class="navbar-brand" href="${pageContext.request.contextPath }/">HOME</a>
+
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/member/list.jsp">Member List</a></li>
+			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/member/updateform.jsp">Add a new member</a></li>
+			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/todo/list.jsp">Todo List</a></li>
+		</ul>
+	</div>
+	
 	<div class="container-fluid">
 	
-		<!-- 강의 -->
-		<div class="navbar navbar-expand-sm navbar-dark bg-primary">
-			<a class="navbar-brand" href="${pageContext.request.contextPath }/">Acorn</a>
-	
-			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath }/member/list.jsp">Member</a></li>
-				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/todo/list.jsp">Todo</a></li>
-			</ul>
-		</div>
-		
-		<div class="nav">
-			<ul class="nav justify-content-center">
-				<li class="nav-item">
-				   	<a class="nav-link" href="${pageContext.request.contextPath}/">HOME</a>
-				</li>
-				<li class="nav-item">
-				   	<a class="nav-link active" href="${pageContext.request.contextPath}/member/list.jsp">회원 목록 보기</a>
-				</li>
-				<li class="nav-item">
-				    <a class="nav-link" href="${pageContext.request.contextPath}/member/insertform.jsp">회원 정보 추가</a>
-				</li>			
-				<li class="nav-item">
-				   	<a class="nav-link" href="${pageContext.request.contextPath}/todo/list.jsp">할 일 목록 보기</a>
-				</li>
-			</ul>
-		</div>
 	
 		<div class="header">회원 목록 입니다.</div>
-		
-		<!--  
-		<div class="aLink">
-			<a href="insertform.jsp">회원 추가 하러 가기</a> 
-		</div>-->
-		
+	
 		<table class="table table-striped table-dark">
 			<thead>
 				<tr>
@@ -105,12 +84,21 @@
 					<td><%=tmp.getName() %></td>
 					<td><%=tmp.getAddr() %></td>
 					<td><a class="tLink" href="updateform.jsp?num=<%=tmp.getNum()%>">수정</a></td>
-					<td><a class="tLink" href="delete.jsp?num=<%=tmp.getNum() %>">삭제</a></td>
+					<!-- "javascript: javascript영역" -->
+					<td><a class="tLink" href="javascript:deleteConfirm(<%=tmp.getNum()%>)">삭제</a></td>
 				</tr>
 			<%} %>
 			</tbody>
 		</table>
-		
 	</div>
+	
+<script>
+	function deleteConfirm(num) {
+		var inDelete=confirm(num+"번 회원을 삭제 하시겠습니까?");
+		if(inDelete){
+			location.href="delete.jsp?num="+num;
+		}
+	}
+</script>
 </body>
 </html>

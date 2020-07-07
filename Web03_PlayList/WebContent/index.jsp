@@ -35,7 +35,7 @@
 			<ul class="nav justify-content-center">
 				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }">HOME</a></li>
 				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/playlist/insertform.jsp">음악 추가</a></li>
-				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/playlist/pList.jsp">palylist</a></li>
+				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/playlist/pList.jsp">table: palylist</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">List 2</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">List 3</a></li>
 			</ul>

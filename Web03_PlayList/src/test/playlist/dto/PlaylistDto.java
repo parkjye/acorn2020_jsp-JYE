@@ -7,6 +7,8 @@ public class PlaylistDto {
 	private String singer;
 	private String time;
 	
+	//private String listName;
+	
 	public PlaylistDto() {}
 
 	public PlaylistDto(int num, String checked, String title, String singer, String time) {
@@ -16,6 +18,7 @@ public class PlaylistDto {
 		this.title = title;
 		this.singer = singer;
 		this.time = time;
+		//this.listName = listName;
 	}
 
 	public int getNum() {
@@ -57,6 +60,5 @@ public class PlaylistDto {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	
-	
+
 }
