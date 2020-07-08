@@ -13,7 +13,7 @@
 		thisPage라는 파라미터 명으로 home 이라는 문자열 전달하기
 			<jsp:include></jsp:include>내에서 주석 금지
 	--%>
-		
+	
 	<jsp:include page="../include/navbar.jsp">
 		<jsp:param value="home" name="thisPage"/>
 	</jsp:include>

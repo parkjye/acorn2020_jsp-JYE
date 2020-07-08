@@ -4,7 +4,6 @@
     	include 디렉티브를 이용해서 jsp페이지를 include하면
     	해당 페이지에 include된 jsp페이지가 통합되어서 jsp페이지가 만들어진다.
     	결국 실행시점에 사용되는 jsp 페이지는 1개만 사용된다.(=Servlet 1개만 만들어진다.)
-    	
      --%>
 <!DOCTYPE html>
 <html>
