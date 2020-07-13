@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/pwd_updateform.jsp</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
 </head>
 <body>
 <div class="container">

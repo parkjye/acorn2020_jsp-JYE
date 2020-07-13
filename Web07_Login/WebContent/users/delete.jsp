@@ -19,6 +19,7 @@
 <head>
 <meta charset="UTF-8">
 <title>users/delete.jsp</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
 </head>
 <body>
 	<%	%>

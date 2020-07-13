@@ -11,28 +11,27 @@
 <head>
 <meta charset="UTF-8">
 <title>users/info.jsp</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
 </head>
 <body>
 	<div class="container">
-		<table>
-			<thead>
-				<tr>
-					<td>아이디</td>
-					<td>비밀번호</td>
-					<td>이메일</td>
-					<td>프로필</td>
-					<td>가입날짜</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><%=dto.getId() %></td>
-					<td><a href="pwd_updateform.jsp">수정하기</a></td>
-					<td><%=dto.getEmail() %></td>
-					<td><%=dto.getProfile() %></td>
-					<td><%=dto.getRegdate() %></td>
-				</tr>
-			</tbody>
+		<table class="table">
+			<tr>
+				<th>아이디</th>
+				<td><%=dto.getId() %></td>
+			</tr>
+			<tr>
+				<th>비밀번호</th>
+				<td><a href="pwd_updateform.jsp">수정하기</a></td>
+			</tr>
+			<tr>
+				<th>이메일</th>
+				<td><%=dto.getEmail() %></td>
+			</tr>
+			<tr>
+				<th>가입일</th>
+				<td><%=dto.getRegdate() %></td>
+			</tr>
 		</table>
 		<div class="aWrap">
 			<a href="updateform.jsp">개인정보 수정</a>
