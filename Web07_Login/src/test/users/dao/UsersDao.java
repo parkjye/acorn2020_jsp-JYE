@@ -191,8 +191,8 @@ public class UsersDao {
 			return false;
 		}
 	}
-
-	//비밀번호 수정
+	
+	//비밀번호 수정 반영
 	public boolean updatePwd(UsersDto dto) {
 		//필요한 객체의 참조값을 담을 지역변수 만들기 
 		Connection conn = null;
@@ -205,12 +205,56 @@ public class UsersDao {
 
 			String sql = "update users"
 					+ " set pwd=?"
-					+ "	where id=?";
+					+ " where id=? and pwd=?";
 
 			pstmt = conn.prepareStatement(sql);
 
 			//sql문 ?, 에 바인딩
-			pstmt.setString(1, dto.getPwd());
+			pstmt.setString(1, dto.getNewPwd());
+			pstmt.setString(2, dto.getId());
+			pstmt.setString(3, dto.getPwd());
+
+			//sql문 수행하고 update or insert or delete된 row의 갯수 리턴받기
+			flag = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		if (flag > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+		
+	//정보 수정
+	public boolean update(UsersDto dto) {
+		//필요한 객체의 참조값을 담을 지역변수 만들기 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int flag = 0;
+
+		try {
+			//Connection Pool에서 Connection 객체를 하나 가지고 온다.
+			conn = new DbcpBean().getConn();
+
+			String sql = "update users"
+					+ " set email=?"
+					+ " where id=?";
+
+			pstmt = conn.prepareStatement(sql);
+
+			//sql문 ?, 에 바인딩
+			pstmt.setString(1, dto.getEmail());
 			pstmt.setString(2, dto.getId());
 
 			//sql문 수행하고 update or insert or delete된 row의 갯수 리턴받기
@@ -235,5 +279,4 @@ public class UsersDao {
 		}
 	}
 	
-
 }//UsersDao
