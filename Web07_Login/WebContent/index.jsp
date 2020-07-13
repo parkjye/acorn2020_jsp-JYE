@@ -18,7 +18,7 @@
 		
 		<%if(id != null) {%>
 			<p>
-				<a href="users/info.jsp"><%=id %></a> 님 로그인 중 ...
+				<a href="users/private/info.jsp"><%=id %></a> 님 로그인 중 ...
 				<a href="users/logout.jsp">로그아웃</a>
 			</p>
 		<%} %>
@@ -26,6 +26,8 @@
 		<ul>
 			<li><a href="users/signup_form.jsp">회원가입</a></li>
 			<li><a href="users/loginform.jsp">로그인</a></li>
+			<!-- 로그인 상태에서만 상품구매 가능 -->
+			<li><a href="test/buy.jsp?code=111">111번 상품 구입 테스트</a></li>
 		</ul>
 	</div>
 </body>
