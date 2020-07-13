@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>users/info.jsp</title>
+<title>users/private/info.jsp</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
 </head>
 <body>
@@ -36,7 +36,7 @@
 		<div class="aWrap">
 			<a href="updateform.jsp">개인정보 수정</a>
 			<a href="javascript:deleteConfirm()">탈퇴</a>
-			<a href="../index.jsp">index로 이동</a>
+			<a href="${pageContext.request.contextPath}">index로 이동</a>
 		</div>
 	</div> <!-- container -->
 
