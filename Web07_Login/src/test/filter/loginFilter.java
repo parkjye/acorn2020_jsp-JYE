@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  * web.xml에 필터 정의와 필터 매핑을 어노테이션을 이용해서 할 수 있다.
  * 배열로 경로 전달할 수 있다.
  */
-@WebFilter({"/uesrs/private/*", "/test/*"})
+@WebFilter({"/uesrs/private/*", "/test/*", "/file/private/*"})
 public class loginFilter implements Filter{
 
 	@Override
