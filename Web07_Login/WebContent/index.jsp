@@ -32,7 +32,7 @@
 			<li><a href="ajax/test02.jsp">Ajax 테스트 2</a></li>
 			<li><a href="ajax/test03.jsp">Ajax 테스트 3</a></li>
 			
-			<li><a href="file/list.jsp">자료실 목록 보기/a></li>
+			<li><a href="file/list.jsp">자료실 목록 보기</a></li>
 		</ul>
 	</div>
 </body>
