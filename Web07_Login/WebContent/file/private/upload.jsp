@@ -54,11 +54,17 @@
         List<FileItem> formItems = upload.parseRequest(request);
         //폼전송된 아이템이 존재 한다면 
         if (formItems != null && formItems.size() > 0) {
+        	
+        	// ** 프로젝트 상황에 맞게 코딩 **
+        	// ----------------------------------
+        	
         	//파일 정보를 담을 Dto 객체 생성
         	FileDto dto=new FileDto();
+        	
         	//로그인된 아이디(파일의 작성자)
         	String id=(String)session.getAttribute("id");
         	dto.setWriter(id);
+        	// ----------------------------------
         	
             //반복문 돌면서 FileItem 객체를 불러온다. 
             for (FileItem item : formItems) {
@@ -75,6 +81,8 @@
                 	//파일을 파일시스템에 저장한다.
                     File storeFile = new File(filePath);
                     item.write(storeFile);
+                    
+                	// ----------------------------------
                     //원본 파일명과 저장된 파일명을 FileDto 객체에 담는다.
                    	dto.setOrgFileName(orgFileName);
                    	dto.setSaveFileName(saveFileName);
@@ -83,6 +91,7 @@
                     
                 }else{//폼 필드라면 
                 
+                	// ----------------------------------
                 	if(item.getFieldName().equals("title")){
                 		//제목 읽어오기
                 		String title=item.getString("utf-8");
@@ -95,7 +104,7 @@
         }//if
         
     } catch (Exception ex) {
-     
+     	//예외가 발생했을 때 상황에 맞게 응답
         System.out.println(ex.getMessage());
     }
    
