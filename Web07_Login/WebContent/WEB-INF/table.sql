@@ -6,6 +6,9 @@ create table users(
 	regdate date
 );
 
+create sequence users_seq;
+
+
 create table board_file(
 	nun number primary key,
 	writer varchar2(100) not null,
