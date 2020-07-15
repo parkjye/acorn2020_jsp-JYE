@@ -279,4 +279,47 @@ public class UsersDao {
 		}
 	}
 	
+	//인자로 전달된 아이디가 users테이블에 존재하는지 여부를 리턴하는 메소드
+	public boolean isExist(String inputId) {
+		
+		boolean isExist = false;
+		
+		//필요한 객체의 참조값을 담을 지역변수 만들기 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			//Connection Pool에서 Connection 객체를 하나 가지고 온다.
+			conn = new DbcpBean().getConn();
+			
+			String sql = "select id"
+					+ " from users"
+					+ " where id=?";
+			pstmt = conn.prepareStatement(sql);
+			
+			//sql문 ?, 에 바인딩
+			pstmt.setString(1, inputId);
+			
+			//select 문 수행하고 결과 받아오기 
+			rs = pstmt.executeQuery();
+			
+			//반복문 돌면서 결과 값 추출하기 
+			if(rs.next()) {
+				isExist=true; //해당 아이디가 이미 존재하는 경우				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)rs.close();
+				if (pstmt != null)pstmt.close();
+				if (conn != null)conn.close();
+			} catch (Exception e) {
+			}
+		}
+		return isExist; //아이디 존재 여부를 리턴한다.
+	}
+	
+	
 }//UsersDao
