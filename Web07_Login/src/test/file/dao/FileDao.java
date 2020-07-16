@@ -166,4 +166,44 @@ public class FileDao {
 	}
 	
 	
+	//파일 삭제 메소드
+	public boolean deleteFile(int num) {
+		//필요한 객체의 참조값을 담을 지역변수 만들기 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int flag = 0;
+
+		try {
+			//Connection Pool에서 Connection 객체를 하나 가지고 온다.
+			conn = new DbcpBean().getConn();
+
+			String sql = "delete from board_file where num=?";
+
+			pstmt = conn.prepareStatement(sql);
+
+			//sql문 내의 ? 에 바인딩
+			pstmt.setInt(1, num);
+
+			//sql문 수행하고 수행 된 row의 갯수 리턴받기
+			flag = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close(); //Connection반납
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		if (flag > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }//FileDao
