@@ -112,5 +112,58 @@ public class FileDao {
 		return list;
 	}
 
+	
+	//파일 번호에 해당하는 파일 정보를 리턴하는 메소드
+	public FileDto getData(int num) {
+		
+		FileDto dto = null;
+		
+		//필요한 객체의 참조값을 담을 지역변수 만들기
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			//Connection Pool에서 Connection 객체를 하나 가지고 온다.
+			conn = new DbcpBean().getConn();
 
+			//실행할 sql 문 준비하기
+			String sql = "select writer, title, orgFileName, saveFileName, filseSize, regdate"
+					+ " from board_file"
+					+ " where num=?";
+			pstmt = conn.prepareStatement(sql);
+
+			//sql문 values내의 ?에 바인딩
+			pstmt.setInt(1, num);
+
+			//select문 수행하고 결과 받아오기
+			rs = pstmt.executeQuery();
+
+			//반복문 돌면서 결과 값 추출하기
+			if (rs.next()) {
+				dto = new FileDto();
+				dto.setNum(num);
+				dto.setWriter(rs.getString("writer"));
+				dto.setTitle(rs.getString("title"));
+				dto.setOrgFileName(rs.getString("orgFileName"));
+				dto.setSaveFileName(rs.getString("saveFileName"));
+				dto.setFileSize(rs.getLong("filseSize"));
+				dto.setRegdate(rs.getString("regdate"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close(); //Connection반납
+			} catch (Exception e) {
+			}
+		}		
+		return dto;
+	}
+	
+	
 }//FileDao
