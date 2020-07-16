@@ -14,7 +14,7 @@
     	//2. DB에서 해당 파일의 정보(saveFileName)를 읽어온다.
     	FileDao dao = FileDao.getInstance();
     	FileDto dto = dao.getData(num);
-    	
+
     	
     	//3. 파일 시스템에서 해당 파일을 삭제한다.
     	
