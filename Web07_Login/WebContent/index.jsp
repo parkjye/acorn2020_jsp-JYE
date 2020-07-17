@@ -26,14 +26,18 @@
 		<ul>
 			<li><a href="users/signup_form.jsp">회원가입</a></li>
 			<li><a href="users/loginform.jsp">로그인</a></li>
+			
 			<!-- 로그인 상태에서만 상품구매 가능 -->
 			<li><a href="test/buy.jsp?code=111">111번 상품 구입 테스트</a></li>
+			
 			<li><a href="ajax/test01.jsp">Ajax 테스트</a></li>
 			<li><a href="ajax/test02.jsp">Ajax 테스트 2</a></li>
 			<li><a href="ajax/test03.jsp">Ajax 테스트 3</a></li>
 			
 			<li><a href="file/list.jsp">자료실 목록 보기</a></li>
+			
 			<li><a href="gallery/test.jsp.jsp">이미지 업로드 TEST</a></li>
+			<li><a href="gallery/test2.jsp.jsp">ajax 이미지 업로드</a></li>
 		</ul>
 	</div>
 </body>

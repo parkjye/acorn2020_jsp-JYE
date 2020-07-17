@@ -131,7 +131,7 @@ public class UsersDao {
 			rs = pstmt.executeQuery();
 			
 			//반복문 돌면서 결과 값 추출하기 
-			if(rs.next()) {
+			while(rs.next()) {
 				dto = new UsersDto();
 				dto.setId(id);
 				dto.setPwd(rs.getString("pwd"));
@@ -236,7 +236,7 @@ public class UsersDao {
 		}
 	}
 		
-	//정보 수정
+	//회원정보 수정
 	public boolean update(UsersDto dto) {
 		//필요한 객체의 참조값을 담을 지역변수 만들기 
 		Connection conn = null;
@@ -248,14 +248,15 @@ public class UsersDao {
 			conn = new DbcpBean().getConn();
 
 			String sql = "update users"
-					+ " set email=?"
+					+ " set email=?, profile=?"
 					+ " where id=?";
 
 			pstmt = conn.prepareStatement(sql);
 
 			//sql문 ?, 에 바인딩
 			pstmt.setString(1, dto.getEmail());
-			pstmt.setString(2, dto.getId());
+			pstmt.setString(2, dto.getProfile());
+			pstmt.setString(3, dto.getId());
 
 			//sql문 수행하고 update or insert or delete된 row의 갯수 리턴받기
 			flag = pstmt.executeUpdate();
