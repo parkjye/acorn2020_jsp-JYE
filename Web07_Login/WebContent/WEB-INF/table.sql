@@ -1,14 +1,3 @@
-create table users(
-	id varchar2(100) primary key,
-	pwd varchar2(100) not null,
-	email varchar2(100),
-	profile varchar2(100), --프로필 이미지 경로를 저장할 컬럼
-	regdate date
-);
-
-create sequence users_seq;
-
-
 create table board_file(
 	nun number primary key,
 	writer varchar2(100) not null,
@@ -20,3 +9,14 @@ create table board_file(
 );
 
 create sequence board_file_seq;
+
+--사용자(회언) 정보를 저장할 테이블
+create table users(
+	id varchar2(100) primary key,
+	pwd varchar2(100) not null,
+	email varchar2(100),
+	profile varchar2(100), --프로필 이미지 경로를 저장할 컬럼
+	regdate date
+);
+
+create sequence users_seq;
