@@ -35,9 +35,13 @@
 <div class="container">
 	<h1>회원정보 수정 폼 입니다.</h1>
 	<%if(dto.getProfile()==null){ %>
-		<img id="profileImage" src="${pageContext.request.contextPath}/images/yellowbird.png" alt="기본 이미지" />
+		<a id="profileLink" href="javascrirpt:">
+			<img id="profileImage" src="${pageContext.request.contextPath}/images/yellowbird.png" alt="기본 이미지" />
+		</a>
 	<%} else {%>
-		<img id="profileImage" src="${pageContext.request.contextPath}<%=dto.getProfile() %>" alt="" />
+		<a id="profileLink" href="javascrirpt:">
+			<img id="profileImage" src="${pageContext.request.contextPath}<%=dto.getProfile() %>" alt="" />
+		</a>
 	<%} %>
 	<form action="update.jsp" method="post">
 		<input type="hidden" name="profile" id="profile" value="<%=dto.getProfile() %>"/>
@@ -63,8 +67,8 @@
 <script src="${pageContext.request.contextPath}/js/jquery-3.5.1.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery.form.min.js"></script>
 <script>
-	//프로필 이미지를 클릭했을 때 실행할 함수 등록
-	$("#profileImage").on("click", function(){
+	//프로필 링크를 클릭했을 때 실행할 함수 등록
+	$("#profileLink").on("click", function(){
 		//input type="file"을 강제 클릭한다.
 		$("#image").click();
 	});
