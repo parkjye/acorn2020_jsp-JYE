@@ -38,6 +38,7 @@
 			
 			<li><a href="gallery/test.jsp.jsp">이미지 업로드 TEST</a></li>
 			<li><a href="gallery/test2.jsp.jsp">ajax 이미지 업로드</a></li>
+			<li><a href="gallery/list.jsp">이미지 갤러리</a></li>
 		</ul>
 	</div>
 </body>

@@ -1,3 +1,13 @@
+create table board_gallery(
+	num number primary key,
+	writer varchar2(100),
+	caption varchar2(100),
+	imagePath varchar2(100),
+	regdate date
+);
+
+create sequence board_gallery_seq;
+
 create table board_file(
 	nun number primary key,
 	writer varchar2(100) not null,
