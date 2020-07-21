@@ -1,3 +1,16 @@
+/*
+ * 키워드 검색하는 sql문
+ * where title like '%' || '안녕' ||'%' --'안녕'이라는 단어가 포함된 제목 검색
+ * */
+select *
+from (select result1.*, ROWNUM as rnum
+		from(select * from board_file 
+			where title like '%' || ? ||'%' or content like '%' || ? || '%'
+			order by num desc) result1 )
+where rnum between 1 and 5 --1page
+
+
+
 --페이징 처리를 위한 select문
 /*
  * between 1 and 5 ==>1page 보여지는 글의 갯수
