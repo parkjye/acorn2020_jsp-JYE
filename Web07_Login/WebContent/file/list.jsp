@@ -85,7 +85,7 @@
 	//전체 row의 갯수를 담을 변수
 	int totalRow = 0;
 	
-	if(keyword != null) { //만일 키워드가 넘어온다면
+	if(!keyword.equals("")) { //만일 키워드가 빈문자열이 아니면
 		if(condition.equals("title_filename")){
 			//검색 키워드를 FileDto 객체의 필드에 담는다.
 			dto.setTitle(keyword);
@@ -205,9 +205,9 @@
 	<form action="list.jsp" method="get">
 		<label for="condition">검색조건</label>
 		<select name="condition" id="condition">
-			<option value="title_filename">제목+파일명</option>
-			<option value="title">제목</option>
-			<option value="writer">작성자</option>
+			<option value="title_filename" <%if(condition.equals("title_filename")){%>selected<%} %>>제목+파일명</option>
+			<option value="title" <%if(condition.equals("title")){%>selected<%} %>>제목</option>
+			<option value="writer" <%if(condition.equals("writer")){%>selected<%} %>>작성자</option>
 		</select>
 		<input type="text" name="keyword" placeholder="검색어 입력"/>
 		<button type="submit">검색</button>
