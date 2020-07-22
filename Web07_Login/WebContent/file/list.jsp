@@ -63,16 +63,20 @@
 		검색 키워드에 관련된 처리
 	*/
 	String keyword = request.getParameter("keyword");
+	String condition=request.getParameter("condition");
+
+	if(keyword==null){//전달된 키워드가 없다면 
+		keyword=""; //빈 문자열을 넣어준다. 
+		condition="";
+	}
 	
-	//인코딩된 키워드를 미리 만들어 둔다.
+	//인코딩된 키워드를 미리 만들어 둔다. 
 	String encdingK = "";
 	
 	try {	
-		//키워드가 null이면 Exception발생
+		//키워드가 null이면 Exception발생 (인코딩된 키워드)
 		encdingK = URLEncoder.encode("keyword");
 	}catch(Exception e){}
-	
-	String condition = request.getParameter("condition");
 	
 	//검색 키워드와 startRowNum, endRowNum을 담을 FileDto객체 생성
 	FileDto dto = new FileDto();
@@ -108,17 +112,10 @@
 			totalRow=FileDao.getInstance().getCountWriter(dto);
 			
 		}else { //검색 키워드가 없으면 전체 목록을 얻어온다.
-			//검색키워드가 없으면 빈문자열
-			condition ="";
-			keyword="";
-			
 			list = FileDao.getInstance().getList(dto);
 			totalRow = FileDao.getInstance().getCount();
 		}
 	}
-	
-	//전체 row 의 갯수를 읽어온다.
-	//int totalRow=list.size();
 	
 	//전체 페이지의 갯수 구하기
 	int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
@@ -133,17 +130,6 @@
 	if(totalPageCount < endPageNum){
 		endPageNum=totalPageCount; //보정해준다. 
 	}
-	
-	/*
-		startRowNum과 endRowNumdmf FileDto객체에 담고
-		FileDto dto = new FileDto();
-		dto.setStartRowNum(startRowNum);
-		dto.setEndRowNum(endRowNum);
-		
-		//FileDto 객체를 인자로 전달해서 파일 목록을 얻어온다.
-		List<FileDto> list = FileDao.getInstance().getList(dto); 
-	*/
-	
 %>
 <div class="container">
 	<h1>파일목록입니다.</h1>
