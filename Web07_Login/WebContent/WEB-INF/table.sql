@@ -1,3 +1,19 @@
+-- CAFE TABLE
+CREATE TABLE board_cafe(
+	num NUMBER PRIMARY KEY,
+	writer VARCHAR2(100) NOT NULL,
+	title VARCHAR2(100) NOT NULL,
+	content CLOB, 
+	--Smart Editor에 작성된 자료들을 html로 DB에 저장하기 때문에 CLOB type으로 한다.
+	viewCount NUMBER, --조회수
+	regdate DATE
+);
+
+create SEQUENCE board_cafe_seq;
+
+
+
+
 /*
  * 키워드 검색하는 sql문
  * where title like '%' || '안녕' ||'%' --'안녕'이라는 단어가 포함된 제목 검색
@@ -8,6 +24,7 @@ from (select result1.*, ROWNUM as rnum
 			where title like '%' || ? ||'%' or content like '%' || ? || '%'
 			order by num desc) result1 )
 where rnum between 1 and 5 --1page
+
 
 
 
@@ -27,6 +44,8 @@ select *
 from (select result1.*, ROWNUM as rnum
 		from(select * from board_file order by num desc) result1 )
 where rnum between 1 and 5 --1page
+
+
 
 
 --이미지 갤러리
@@ -52,6 +71,8 @@ create table board_file(
 );
 
 create sequence board_file_seq;
+
+
 
 
 --사용자(회언) 정보를 저장할 테이블
