@@ -1,8 +1,11 @@
 --이전글/다음글 확인을 위한
-select num, writer, title,
-LAG(num, 1, 0) over (order by num desc) as prevNum,
-LEAD(num, 1, 0) over (order by num desc) as nextNum 
-from board_cafe order by num desc;
+select result1.* 
+from 
+	(SELECT num, writer, title, content, viewCount, regdate,
+	LAG(num, 1, 0) OVER (order by num desc) as prevNum,
+	LEAD(num, 1, 0) over (order by num desc) as nextNum
+	FROM board_cafe) result1 
+WHERE num=?
 
 
 
