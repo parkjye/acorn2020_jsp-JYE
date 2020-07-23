@@ -1,3 +1,12 @@
+--이전글/다음글 확인을 위한
+select num, writer, title,
+LAG(num, 1, 0) over (order by num desc) as prevNum,
+LEAD(num, 1, 0) over (order by num desc) as nextNum 
+from board_cafe order by num desc;
+
+
+
+
 -- CAFE TABLE
 CREATE TABLE board_cafe(
 	num NUMBER PRIMARY KEY,

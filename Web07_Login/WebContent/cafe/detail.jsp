@@ -5,10 +5,13 @@
 <%
 	//1. GET 방식 파라미터로 전달되는 글번호를 읽어온다.
 	int num=Integer.parseInt(request.getParameter("num"));
+
 	//2. DB 에서 해당 글 정보를 얻어온다.
 	CafeDto dto=CafeDao.getInstance().getData(num);
+	
 	//3. 해당글의 조회수를 1 증가 시킨다.
 	CafeDao.getInstance().addViewCount(num);
+	
 	//4. 글 정보를 응답한다.
 %>    
 <!DOCTYPE html>
@@ -27,6 +30,23 @@
 <body>
 <div class="container">
 	<h1>글 상세 페이지</h1>
+	
+	<%if(dto.getPrevNum() != 0){ %>
+	<div class="pageWrap">
+		<ul>
+			<li><a href="detail.jsp?num=<%=dto.getPrevNum()%>">이전글</a></li>
+		</ul>
+	</div>
+	<%} %>
+	
+	<%if(dto.getNextNum() != 0){ %>
+	<div class="pageWrap">
+		<ul>
+			<li><a href="detail.jsp?num=<%=dto.getPrevNum()%>">이전글</a></li>
+		</ul>
+	</div>
+	<%} %>
+	
 	<table>
 		<tr>
 			<th>글번호</th>

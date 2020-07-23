@@ -92,8 +92,18 @@ public class CafeDao {
 		ResultSet rs = null;
 		try {
 			conn = new DbcpBean().getConn();
-			String sql = "SELECT writer,title,content,viewCount,regdate"
-					+ " FROM board_cafe"
+			
+			/*
+			 * 서브쿼리 사용
+			 * 전체 글 목록의 prevNum, nextNum을 구한 결과(result1)를 서브쿼리로 넣고
+			 * where num=? 으로 기준이 되는 글 번호를 바인딩
+			 * */
+			String sql = "select result1.*"
+					+ " from"
+					+ " 	(SELECT num, writer, title, content, viewCount, regdate,"
+					+ " 	LAG(num, 1, 0) OVER (order by num desc) as prevNum,"
+					+ " 	LEAD(num, 1, 0) over (order by num desc) as nextNum"
+					+ " 	FROM board_cafe) result1"
 					+ " WHERE num=?";
 			pstmt = conn.prepareStatement(sql);
 			// ? 에 값 바인딩 
@@ -107,6 +117,8 @@ public class CafeDao {
 				dto.setContent(rs.getString("content"));
 				dto.setViewCount(rs.getInt("viewCount"));
 				dto.setRegdate(rs.getString("regdate"));
+				dto.setPrevNum(rs.getInt("prevNum"));
+				dto.setNextNum(rs.getInt("nextNum"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
