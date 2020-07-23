@@ -43,6 +43,8 @@
 			<li><a href="gallery/list.jsp">이미지 갤러리</a></li>
 			
 			<li><a href="test/editor.jsp">SmartEditor 테스트</a></li>
+			
+			<li><a href="cafe/list.jsp">카페 글 목록 보기</a></li>
 		</ul>
 	</div>
 </body>
