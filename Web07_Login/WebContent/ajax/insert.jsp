@@ -11,4 +11,10 @@
 		//클라이언트에게 응답할 문자열이라고 가정한다.
 		String name = "김구라";
 	%>
-{"isSuccess":<%=result %>, "name":"<%=name %>"}
+{
+	"isSuccess":"<%=result %>", 
+	"name":"<%=name %>", 
+	
+	"email":"<%=email %>",
+	"phone":"<%=phone %>"
+}
