@@ -21,7 +21,7 @@
 		
 		text-align: cneter;
 
-		z-index: 1000; /*  position 속성이 설정된 엘리먼트에 대해서만 의미를 갖는다. */
+		z-index: 1000; /* position 속성이 설정된 엘리먼트에 대해서만 의미를 갖는다. */
 		display: none;
 	}
 </style>
@@ -37,7 +37,7 @@
 	<div class="loader">
 		<img src="${pageContext.request.contextPath}/images/ajax-loader.gif" alt="ajax-loader" />
 	</div>
-	
+
 <script src="${pageContext.request.contextPath}/js/jquery-3.5.1.js"></script>
 <script>
 	//웹 브라우저에 scroll이벤트가 일어났을 때 실행할 함수 등록
@@ -53,8 +53,8 @@
 		//document의 높이
 		var documentHeight=$(document).height();
 		
-		//바닥까지 스크롤 되었는지 여부
-		var isBottom = scrollTop + windowHeight == documentHeight;
+		//바닥까지 스크롤 되었는지 여부(+10px 여유 추가)
+		var isBottom = scrollTop + windowHeight + 10 >= documentHeight;
 		if(isBottom){//만일 바닥까지 스크롤 했다면
 			//로딩 이미지를 띄우고
 			$(".loader").show();
