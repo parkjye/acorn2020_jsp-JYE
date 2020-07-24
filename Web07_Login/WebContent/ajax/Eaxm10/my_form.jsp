@@ -16,9 +16,9 @@
 <script src="${pageContext.request.contextPath}/js/jquery-3.5.1.js"></script>
 <script>
 	$("#myForm").on("submit", function(){
-		var method=$(this).attr(method);
-		var action=$(this).attr(action);
-		var query=$(this).seliarize();
+		var method=$(this).attr("method");
+		var action=$(this).attr("action");
+		var query=$(this).serialize();
 		
 		$.ajax({
 			method:method,
