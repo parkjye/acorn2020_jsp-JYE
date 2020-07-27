@@ -50,6 +50,9 @@
 			<li><a href="test/cookie_form.jsp">쿠키test</a></li>
 			<li><a href="test/cookie_form2.jsp">쿠키test 2</a></li>
 			<li><a href="test/cookie_form3.jsp">쿠키test 3</a></li>
+			
+			<li><a href="test/popup.jsp">팝업 test1</a></li>
+			<li><a href="test/popup2.jsp">팝업 test2</a></li>
 		</ul>
 	</div>
 </body>
