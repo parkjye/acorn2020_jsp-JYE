@@ -16,11 +16,21 @@
 <script src="${pageContext.request.contextPath}/js/jquery-3.5.1.js"></script>
 <script>
 	$("#myForm").on("submit", function(){
-		var action=$(this).attr("action"); //action 속성의 value
-		var method=$(this).attr("method"); //method 속성의 value
 		
-		//email=xxx&phone=xxx 형식의 문자열이 읽어와진다.  
-		var query=$(this).serialize(); //폼에 입력한 값을 query string으로 읽어오기
+		/*
+			.attr()은 요소(element)의 속성(attribute)의 값을 가져오거나 추가한다.
+			
+			action 속성의 value(= insert.jsp)
+			method 속성의 value(= post)
+		*/
+		var action=$(this).attr("action");
+		var method=$(this).attr("method");
+		
+		/*
+			.serialize()은 폼에 입력한 값을 query string으로 읽어온다.
+			email=xxx&phone=xxx 형식으로 문자열이 읽어와진다.
+		*/
+		var query=$(this).serialize();
 		console.log(query);
 		
 		//ajax요청을 통해서 폼에 입력한 내용을 전송한다.

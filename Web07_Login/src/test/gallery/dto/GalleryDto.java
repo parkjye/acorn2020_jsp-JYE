@@ -7,15 +7,22 @@ public class GalleryDto {
 	private String imagePath;
 	private String regdate;
 	
+	//페이징 처리를 위한 선언
+	private int StartRowNum;
+	private int EndRowNum;
+	
 	public GalleryDto() {}
 
-	public GalleryDto(int num, String writer, String caption, String imagePath, String regdate) {
+	public GalleryDto(int num, String writer, String caption, String imagePath, String regdate,
+						int StartRowNum, int EndRowNum) {
 		super();
 		this.num = num;
 		this.writer = writer;
 		this.caption = caption;
 		this.imagePath = imagePath;
 		this.regdate = regdate;
+		this.StartRowNum = StartRowNum;
+		this.StartRowNum = StartRowNum;
 	}
 
 	public int getNum() {
@@ -57,5 +64,21 @@ public class GalleryDto {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
+
+	public int getStartRowNum() {
+		return StartRowNum;
+	}
+
+	public void setStartRowNum(int startRowNum) {
+		StartRowNum = startRowNum;
+	}
+
+	public int getEndRowNum() {
+		return EndRowNum;
+	}
+
+	public void setEndRowNum(int endRowNum) {
+		EndRowNum = endRowNum;
+	}	
 	
 }
