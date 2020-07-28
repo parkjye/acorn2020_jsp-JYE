@@ -56,6 +56,8 @@
 			
 			<li><a href="test/el_test.jsp">EL test1</a></li>
 			<li><a href="test/el_test.jsp">EL test2</a></li>
+			
+			<li><a href="test/jstl_test.jsp">jstl</a></li>
 		</ul>
 	</div>
 </body>
