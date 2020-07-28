@@ -53,6 +53,9 @@
 			
 			<li><a href="test/popup.jsp">팝업 test1</a></li>
 			<li><a href="test/popup2.jsp">팝업 test2</a></li>
+			
+			<li><a href="test/el_test.jsp">EL test1</a></li>
+			<li><a href="test/el_test.jsp">EL test2</a></li>
 		</ul>
 	</div>
 </body>
