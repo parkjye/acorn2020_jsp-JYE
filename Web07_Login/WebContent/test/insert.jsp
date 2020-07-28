@@ -4,22 +4,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>/test/insert.jsp</title>
 <style>
 	#content{
-		width:768px;
-		height: 300px;
-		border: 1px dotted red;
-		box-shadow: 3px 3px 5px;
+		width: 768px;
+		border: 1px dotted #cecece;
+		box-shadow: 3px 3px 5px 6px #ccc;
 	}
 </style>
 </head>
 <body>
 <%
-	String title = request.getParameter("title");
-	String content = request.getParameter("content");
+	String title=request.getParameter("title");
+	String content=request.getParameter("content");
 	System.out.println(content);
 %>
 <p><%=title %></p>
+<div id="content"><%=content %></div>
 </body>
 </html>
