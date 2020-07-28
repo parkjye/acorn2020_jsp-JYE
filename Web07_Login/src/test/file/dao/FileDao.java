@@ -67,7 +67,53 @@ public class FileDao {
 		return count;
 	}
 	
-	//제목+파일명 검색결과 row 갯수 리턴하는 메소드
+	//파일 정보를 DB에 저장하는 메소드
+	public boolean insert(FileDto dto) {
+			//필요한 객체의 참조값을 담을 지역변수 만들기 
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			int flag = 0;
+
+			try {
+				//Connection Pool에서 Connection 객체를 하나 가지고 온다.
+				conn = new DbcpBean().getConn();
+				
+				String sql = "insert into board_file"
+						+ " (num, writer, title, orgFileName, saveFileName, fileSize, regdate)"
+						+ " values(board_file_seq.nextval, ?, ?, ?, ?, ?, sysdate)";
+				
+				pstmt = conn.prepareStatement(sql);
+				
+				//sql문 ?, 에 바인딩
+				pstmt.setString(1, dto.getWriter());
+				pstmt.setString(2, dto.getTitle());
+				pstmt.setString(3, dto.getOrgFileName());
+				pstmt.setString(4, dto.getSaveFileName());
+				pstmt.setLong(5, dto.getFileSize());
+					
+				//sql문 수행하고 update or insert or delete된 row의 갯수 리턴받기
+				flag = pstmt.executeUpdate();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (pstmt != null)pstmt.close();
+					if (conn != null)conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if (flag > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	
+	//----------------키워드 관련 메소드-----------------------
+	
+	//'제목+파일명' 검색결과 row 갯수 리턴하는 메소드
 	public int getCountTitleFileName(FileDto dto){
 		//전체 row의 갯수를 담을 지역변수
 		int count=0;
@@ -118,7 +164,7 @@ public class FileDao {
 		return count;
 	}
 	
-	//제목 파일명 검색결과 row 갯수 리턴하는 메소드
+	//'파일명' 검색결과 row 갯수 리턴하는 메소드
 	public int getCountTitle(FileDto dto){
 		//전체 row의 갯수를 담을 지역변수
 		int count=0;
@@ -168,7 +214,7 @@ public class FileDao {
 		return count;
 	}
 
-	//제목 파일명 검색결과 row 갯수 리턴하는 메소드
+	//'작성자' 검색결과 row 갯수 리턴하는 메소드
 	public int getCountWriter(FileDto dto){
 		//전체 row의 갯수를 담을 지역변수
 		int count=0;
@@ -217,51 +263,6 @@ public class FileDao {
 		}
 		return count;
 	}
-	
-	//파일 정보를 DB에 저장하는 메소드
-	public boolean insert(FileDto dto) {
-		//필요한 객체의 참조값을 담을 지역변수 만들기 
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		int flag = 0;
-
-		try {
-			//Connection Pool에서 Connection 객체를 하나 가지고 온다.
-			conn = new DbcpBean().getConn();
-			
-			String sql = "insert into board_file"
-					+ " (num, writer, title, orgFileName, saveFileName, fileSize, regdate)"
-					+ " values(board_file_seq.nextval, ?, ?, ?, ?, ?, sysdate)";
-			
-			pstmt = conn.prepareStatement(sql);
-			
-			//sql문 ?, 에 바인딩
-			pstmt.setString(1, dto.getWriter());
-			pstmt.setString(2, dto.getTitle());
-			pstmt.setString(3, dto.getOrgFileName());
-			pstmt.setString(4, dto.getSaveFileName());
-			pstmt.setLong(5, dto.getFileSize());
-				
-			//sql문 수행하고 update or insert or delete된 row의 갯수 리턴받기
-			flag = pstmt.executeUpdate();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (pstmt != null)pstmt.close();
-				if (conn != null)conn.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		if (flag > 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
 	
 	//파일목록을 리턴해주는 메소드
 	public List<FileDto> getList(FileDto dto){ //startRowNum, endRowNum을 받아서 select
@@ -502,6 +503,7 @@ public class FileDao {
 		return list;
 		}
 	
+	//----------------키워드 관련 메소드-----------------------
 	
 	//파일 번호에 해당하는 파일 정보를 리턴하는 메소드
 	public FileDto getData(int num) {
