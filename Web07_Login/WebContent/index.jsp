@@ -16,15 +16,14 @@
 
 %>
 	<div class="container">
-		<h1>인덱스 페이지 입니다.</h1>
-		
-		<%if(id != null) {%>
+		<c:if test="${not empty id }">
 			<p>
-				<a href="users/private/info.jsp"><%=id %></a> 님 로그인 중 ...
-				<a href="users/logout.jsp">로그아웃</a>
+				<a href="users/private/info.jsp">${id }</a>님 로그인 중
+				<a href="users/logout.jsp"></a>로그아웃
 			</p>
-		<%} %>
-		
+		</c:if>
+	
+		<h1>인덱스 페이지 입니다.</h1>
 		<ul>
 			<li><a href="users/signup_form.jsp">회원가입</a></li>
 			<li><a href="users/loginform.jsp">로그인</a></li>

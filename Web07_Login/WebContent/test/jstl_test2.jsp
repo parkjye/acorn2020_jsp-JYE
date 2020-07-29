@@ -9,6 +9,8 @@
     	names.add("김구라");
     	names.add("해골");
     	names.add("원숭이");
+    	
+    	//session, request, application영역에 담아두면 EL로 추출가능하다.
     	request.setAttribute("list", names);
     
     %>
@@ -36,5 +38,35 @@
 		<li>${tmp }</li>
 	</c:forEach>
 </ul>
+
+<h1>친구 목록 입니다. 인덱스 표시</h1>
+<ul>
+	<c:forEach var="tmp" items="${list }" varStatus="sattus">
+		<li data-index="${status.index }">${tmp } <strong>${status.index }</strong></li>
+	</c:forEach>
+</ul>
+
+<h1>친구 목록 입니다. 순서 표시</h1>
+<ul>
+	<c:forEach var="tmp" items="${list }" varStatus="sattus">
+		<li data-index="${status.count }">${tmp } <strong>${status.count }</strong></li>
+	</c:forEach>
+</ul>
+
+<h1>친구 목록 입니다. 첫번째 인지 여부</h1>
+<ul>
+	<c:forEach var="tmp" items="${list }" varStatus="sattus">
+		<li>${tmp } <strong>첫번째: ${status.first }</strong></li>
+	</c:forEach>
+</ul>
+
+<h1>친구 목록 입니다. 마지막 인지 여부</h1>
+<ul>
+	<c:forEach var="tmp" items="${list }" varStatus="sattus">
+		<li>${tmp } <strong>마지막: ${status.last }</strong></li>
+	</c:forEach>
+</ul>
+
+<a href="jstl_test3.jsp">다음 예제</a>
 </body>
 </html>
