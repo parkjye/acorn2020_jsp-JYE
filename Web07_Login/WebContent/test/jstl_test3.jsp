@@ -34,7 +34,6 @@
 	
 	request.setAttribute("list", list);
 	
-	
 	String hobby = "piano/game/reading";
 	request.setAttribute("forFun", hobby);
 	
@@ -57,9 +56,11 @@
 	</thead>
 	<tbody>
 		<c:forEach var="tmp" items="${list }" >
+		<tr>
 			<td>${tmp.num }</td>
 			<td>${tmp.writer }</td>
 			<td>${tmp.title }</td>
+		</tr>
 		</c:forEach>
 	</tbody>
 </table>
