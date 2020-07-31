@@ -57,6 +57,8 @@
 			<li><a href="test/el_test.jsp">EL test2</a></li>
 			
 			<li><a href="test/jstl_test.jsp">jstl</a></li>
+			
+			<li><a href="test/jstl_test.jsp">정규표현식 테스트1</a></li>
 		</ul>
 	</div>
 </body>
