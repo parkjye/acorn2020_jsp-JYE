@@ -9,6 +9,8 @@
 <body>
 <input type="text" id="inputMsg" placeholder="하고 싶은 말 입력..." style="width:500px;"/>
 <button id="sendBtn">전송</button>
+<ul id="wordList"></ul>
+<a href="regular_ex3.jsp">다음 예제</a>
 
 <script src="${pageContext.request.contextPath }/js/jquery-3.5.1.js"></script>
 <script>
@@ -27,8 +29,7 @@
 			if(result==null){
 				break;
 			}
-			alert(result);
-			
+			//alert(result);
 			//li요소를 만들어서 단어를 출력하고 #wordList에 추가하기
 			$("<li/>").text(result).appendTo("#wordList");
 		}
