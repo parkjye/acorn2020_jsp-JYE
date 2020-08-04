@@ -19,7 +19,7 @@
 		<c:if test="${not empty id }">
 			<p>
 				<a href="users/private/info.jsp">${id }</a>님 로그인 중
-				<a href="users/logout.jsp"></a>로그아웃
+				<a href="users/logout.jsp">로그아웃</a>
 			</p>
 		</c:if>
 	

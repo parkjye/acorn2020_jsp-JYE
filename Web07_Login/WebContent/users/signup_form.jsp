@@ -126,7 +126,9 @@
 	});
 	
 	$("#email").on("input", function(){
-		var inputEmail = reg_email.test(inputEmail);
+		var inputEmail = $("#email").val();
+		isEmailValid = reg_email.test(inputEmail);
+		
 		$(this).removeClass("is-valid, is-invalid");
 		if(isEmailValid){
 			$(this).addClass("is-valid");
