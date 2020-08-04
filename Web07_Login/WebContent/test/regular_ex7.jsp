@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/test/regular_ex4.jsp</title>
+<title>/test/regular_ex7.jsp</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
 </head>
 <body>
@@ -16,6 +16,7 @@
 			<label for="id">아이디</label>
 			<input class="form-control" type="text" id="id" name="id" placeholder="아이디 입력..."/>
 			<div class="invalid-feedback">영문자 소문자로 시작을 하고 최소 5글자에서 최대 10글자 이내로 작성하세요</div>
+			<div class="valid-feedback">아이디를 제대로 입력했습니다.</div>
 		</div>
 		
 		<div class="form-group">
@@ -50,8 +51,12 @@
 		var inputId = $("#id").val();
 		isIdValid = reg_id.test(inputId);
 		
+		//일단 is-valid, is-invalid 클래스를 제거 후
+		$(this).removeClass("is-valid is-invalid");
+
+		//아이디가 유효하다면
 		if(isIdValid){
-			$(this).removeClass("is-invalid");
+			$(this).addClass("is-valid");
 		}else{
 			$(this).addClass("is-invalid");
 		}
@@ -61,8 +66,11 @@
 		var inputPhone=$("#phone").val();
 		isPhoneValid=reg_phone.test(inputPhone);
 		
+		//일단 is-valid, is-invalid 클래스를 제거 후
+		$(this).removeClass("is-valid is-invalid");
+		
 		if(isPhoneValid){
-			$(this).removeClass("is-invalid");
+			$(this).addClass("is-valid");
 		}else{
 			$(this).addClass("is-invalid");
 		}
@@ -77,16 +85,6 @@
 			return false;
 		}
 	});
-	
-	/*jQuery를 사용하지 않으면 다음과 같다.
-	document.querySelector("#myForm").addEventListener("submit",function(event){
-		isFormValid = isIdValid && isPhoneValid;
-		//폼이 유효하지 않으면 함수에 전달된 이벤트 객체의 preventDefault()를 호출 -> 폼 제출이 막아진다(기본 동작 막기)
-		if(!isFormValid){
-			event.preventDefault();
-		}
-	});
-	*/
 	
 </script>
 </body>

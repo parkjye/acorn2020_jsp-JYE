@@ -13,7 +13,8 @@
 	}
 	
 	.regularWrap{
-		background: lightyellow;
+		margin: 40px;
+		background: lightcoral;
 	}
 </style>
 </head>
