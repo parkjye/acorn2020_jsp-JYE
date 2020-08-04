@@ -27,7 +27,7 @@ public class TodoServlet extends HttpServlet{
 		req.setAttribute("todoListKey", todoList);
 		
 		//3. view페이지로 forward 이동해서 응답하기
-		RequestDispatcher rd = req.getRequestDispatcher("/views/todo/list.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/views/todo/list.jsp");
 		rd.forward(req, resp);
 	}
 }

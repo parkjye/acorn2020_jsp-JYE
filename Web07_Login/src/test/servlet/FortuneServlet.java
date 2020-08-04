@@ -21,7 +21,7 @@ public class FortuneServlet extends HttpServlet{
 		req.setAttribute("fortuneToday", fortuneToday);
 		
 		//3. view페이지 (jsp페이지)로 forward(=응답을 위임한다) 이동해서 응답하기
-		RequestDispatcher rd = req.getRequestDispatcher("/views/fortune.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/views/fortune.jsp");
 		rd.forward(req, resp);
 	}
 }

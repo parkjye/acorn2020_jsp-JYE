@@ -24,7 +24,7 @@ public class FileServlet extends HttpServlet{
 		req.setAttribute("dto", dto);
 		
 		//3. view페이지(jsp)로 forward이동해서 응답
-		RequestDispatcher rd = req.getRequestDispatcher("/views/file/detail.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/views/file/detail.jsp");
 		rd.forward(req, resp);
 	}
 }
